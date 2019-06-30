@@ -1,0 +1,27 @@
+.c-post-list {
+  font-family: var(--font-sans);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c-post-list__list-item {
+  border-bottom: 1px dotted var(--colour-pale-sky);
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+}
+
+.c-post-list__list-item:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.c-post-list__post-title {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.c-post-list__post-date {
+  color: var(--colour-pale-sky);
+  font-size: 0.9rem;
+}

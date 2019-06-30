@@ -1,0 +1,39 @@
+body {
+  background: var(--colour-spring-wood);
+  color: var(--colour-heavy-metal);
+  font-family: var(--font-serif);
+}
+
+main {
+  border-bottom: 1px dotted var(--colour-pale-sky);
+  margin: 0 auto 40px;
+  max-width: 600px;
+  padding: 20px;
+}
+
+@supports (display: grid) {
+  @media (min-width: 960px) {
+    body {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      grid-template-rows: auto auto 1fr;
+    }
+
+    main {
+      margin: 0 0 40px;
+      padding: 0 40px 20px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    body {
+      grid-template-columns: 30% 70%;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    body {
+      grid-template-columns: 20% 80%;
+    }
+  }
+}

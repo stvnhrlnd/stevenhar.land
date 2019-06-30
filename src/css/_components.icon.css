@@ -1,0 +1,32 @@
+.c-icon {
+  font-family: "IcoMoon";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: none;
+}
+
+.c-icon--facebook:before {
+  content: "\ea91";
+}
+
+.c-icon--instagram:before {
+  content: "\ea92";
+}
+
+.c-icon--twitter:before {
+  content: "\ea96";
+}
+
+.c-icon--feed:before {
+  content: "\ea9c";
+}
+
+.c-icon--github:before {
+  content: "\eab0";
+}
+
+.c-icon--linkedin:before {
+  content: "\eac9";
+}

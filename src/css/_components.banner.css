@@ -1,0 +1,51 @@
+.c-banner {
+  background: var(--colour-heavy-metal);
+  padding: 60px 0 20px;
+  text-align: center;
+  word-break: break-all;
+}
+
+.c-banner__link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.c-banner__title {
+  color: var(--colour-spring-wood);
+  font-size: 2.3rem;
+  margin-bottom: 5px;
+}
+
+.c-banner__title::before {
+  background: url(/images/avatar.jpg);
+  border: 2px solid var(--colour-pear);
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 100px;
+  margin: 0 auto 15px;
+  width: 100px;
+}
+
+.c-banner__surname {
+  color: var(--colour-pear);
+  font-weight: bold;
+}
+
+.c-banner__dot {
+  color: var(--colour-regent-grey);
+}
+
+.c-banner__subtitle {
+  margin: 0;
+}
+
+@supports (display: grid) {
+  @media (min-width: 960px) {
+    .c-banner {
+      grid-row: span 3;
+      min-height: calc(100vh - 80px);
+      padding: 40px;
+    }
+  }
+}

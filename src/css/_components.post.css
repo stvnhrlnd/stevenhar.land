@@ -1,0 +1,12 @@
+.c-post {
+  padding-bottom: 20px;
+}
+
+.c-post__title {
+  margin-bottom: 5px;
+}
+
+.c-post__date {
+  color: var(--colour-pale-sky);
+  font-family: var(--font-sans);
+}

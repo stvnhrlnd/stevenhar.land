@@ -1,0 +1,15 @@
+.c-social {
+  font-family: var(--font-sans);
+  font-size: 1.7rem;
+  margin: 0 0 40px;
+  padding: 0;
+}
+
+.c-social__list-item {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.c-social__link {
+  text-decoration: none;
+}

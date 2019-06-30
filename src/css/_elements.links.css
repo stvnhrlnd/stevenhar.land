@@ -1,0 +1,7 @@
+a {
+  color: var(--colour-blue-chill);
+}
+
+a:focus {
+  outline: 2px solid var(--colour-tree-poppy);
+}

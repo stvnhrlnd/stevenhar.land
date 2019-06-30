@@ -1,0 +1,47 @@
+.c-nav {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.c-nav__list {
+  font-family: var(--font-sans);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c-nav__list-item {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+.c-nav__list-item:last-of-type {
+  margin-right: 0;
+}
+
+.c-nav__link {
+  color: var(--colour-spray);
+  display: block;
+  text-decoration: none;
+}
+
+.c-nav__icon {
+  font-size: 1.7rem;
+}
+
+@supports (display: grid) {
+  @media (min-width: 960px) {
+    .c-nav {
+      max-width: 600px;
+      padding: 10px 40px 5px;
+      position: static;
+      text-align: right;
+    }
+
+    .c-nav__link {
+      color: var(--colour-blue-chill);
+    }
+  }
+}
