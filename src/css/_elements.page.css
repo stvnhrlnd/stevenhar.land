@@ -1,10 +1,10 @@
 body {
-  background: var(--colour-spring-wood);
+  background: var(--colour-heavy-metal);
   color: var(--colour-heavy-metal);
   font-family: var(--font-serif);
 }
 
-main {
+/* main {
   border-bottom: 1px dotted var(--colour-pale-sky);
   margin: 0 auto 40px;
   max-width: 600px;
@@ -36,4 +36,4 @@ main {
       grid-template-columns: 20% 80%;
     }
   }
-}
+} */

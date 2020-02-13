@@ -1,6 +1,11 @@
 .c-banner {
   background: var(--colour-heavy-metal);
-  padding: 60px 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
   text-align: center;
   word-break: break-all;
 }
@@ -40,7 +45,7 @@
   margin: 0;
 }
 
-@supports (display: grid) {
+/* @supports (display: grid) {
   @media (min-width: 960px) {
     .c-banner {
       grid-row: span 3;
@@ -48,4 +53,4 @@
       padding: 40px;
     }
   }
-}
+} */
