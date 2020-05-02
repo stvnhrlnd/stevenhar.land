@@ -1,7 +1,13 @@
 a {
   color: var(--colour-blue-chill);
+  text-decoration-color: var(--colour-regent-grey);
 }
 
 a:focus {
   outline: 2px solid var(--colour-tree-poppy);
+  outline-offset: 0.2rem;
+}
+
+a:hover {
+  text-decoration: none;
 }

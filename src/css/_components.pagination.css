@@ -1,0 +1,19 @@
+.c-pagination {
+  border-top: 1px dotted var(--colour-regent-grey);
+  display: flex;
+  font-family: var(--font-sans);
+  justify-content: space-between;
+  padding: var(--step-3);
+}
+
+.c-pagination__prev:before {
+  content: '\2190';
+}
+
+.c-pagination__next {
+  margin-left: auto;
+}
+
+.c-pagination__next:after {
+  content: '\2192';
+}

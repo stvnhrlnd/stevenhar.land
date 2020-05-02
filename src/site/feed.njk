@@ -1,28 +1,31 @@
 ---
 permalink: feed.xml
-eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>{{ metadata.url }}</id>
-  <title>{{ metadata.title }}</title>
-  <subtitle>{{ metadata.description }}</subtitle>
+  <id>{{ site.url }}</id>
+  <title>{{ site.title }}</title>
+  <subtitle>{{ site.description }}</subtitle>
   <updated>{{ collections.post | rssLastUpdatedDate }}</updated>
   <author>
-    <name>{{ metadata.feed.author.name }}</name>
-    <email>{{ metadata.feed.author.email }}</email>
+    <name>{{ site.feed.author.name }}</name>
+    <email>{{ site.feed.author.email }}</email>
   </author>
-  <link rel="self" href="{{ metadata.feed.path | absoluteUrl(metadata.url) }}"/>
-  <link href="{{ metadata.url }}"/>
-  {%- for post in collections.post -%}
-    {% set absolutePostUrl %}{{ post.url | absoluteUrl(metadata.url) }}{% endset %}
+  <link rel="self" href="{{ site.feed.path | absoluteUrl(site.url) }}"/>
+  <link href="{{ site.url }}"/>
+  {%- for post in collections.post | reverse | limit(10) -%}
+    {% set absolutePostUrl %}{{ post.url | absoluteUrl(site.url) }}{% endset %}
     <entry>
       <id>{{ absolutePostUrl }}</id>
       <title>{{ post.data.title }}</title>
       <updated>{{ post.date | rssDate }}</updated>
-      <content type="html"><![CDATA[{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}]]></content>
+      <content type="html"><![CDATA[{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) | safe }}]]></content>
       <link href="{{ absolutePostUrl }}"/>
-      <summary>{{ post.data.description }}</summary>
+      {% if post.data.description %}
+        <summary><![CDATA[{{ post.data.description | safe }}]]></summary>
+      {% else %}
+        <summary><![CDATA[{{ post.inputPath | preview(absolutePostUrl) | safe }}]]></summary>
+      {% endif %}
     </entry>
   {%- endfor -%}
 </feed>

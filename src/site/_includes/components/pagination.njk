@@ -1,0 +1,29 @@
+{% if not pagination %}
+  {% set paginationPrevText %}Home{% endset %}
+  {% set paginationPrevUrl %}/{% endset %}
+{% else %}
+  {% if pagination.pageNumber > 0 %}
+    {% set paginationPrevText %}Newer posts{% endset %}
+    {% set paginationPrevUrl %}/archive/{{ pagination.pageNumber - 1 }}{% endset %}
+  {% endif %}
+
+  {% if pagination.nextPageHref %}
+    {% set paginationNextText %}Older posts{% endset %}
+    {% set paginationNextUrl %}/archive/{{ pagination.pageNumber + 1 }}{% endset %}
+  {% endif %}
+{% endif %}
+
+{% if paginationPrevUrl or paginationNextUrl %}
+  <div class="c-pagination">
+    {% if paginationPrevUrl %}
+      <a href="{{ paginationPrevUrl }}" class="c-pagination__prev">
+        {{ paginationPrevText }}
+      </a>
+    {% endif %}
+    {% if paginationNextUrl %}
+      <a href="{{ paginationNextUrl }}" class="c-pagination__next">
+        {{ paginationNextText }}
+      </a>
+    {% endif %}
+  </div>
+{% endif %}

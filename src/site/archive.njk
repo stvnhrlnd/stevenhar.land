@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections.post
+  size: 10
+  reverse: true
+permalink: archive/{{ pagination.pageNumber }}/
+---
+{% from "components/post-list.njk" import postList %}
+<h2 class="u-visually-hidden">Posts, page {{ pagination.pageNumber + 1 }} of {{ pagination.pages.length }}</h2>
+{{ postList(pagination.items) }}
+{% include "components/pagination.njk" %}

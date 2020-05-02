@@ -1,0 +1,19 @@
+.o-wrapper {
+  max-width: calc(var(--fluid-max-width) * 1px);
+}
+
+.o-wrapper > * {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.o-wrapper > * > * {
+  flex-grow: 1;
+}
+
+.o-wrapper > * > :last-child {
+  flex-basis: 0;
+  flex-grow: 666;
+  min-width: calc(60% - var(--step-1));
+}

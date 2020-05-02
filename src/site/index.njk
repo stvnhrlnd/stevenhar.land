@@ -1,5 +1,13 @@
 ---
 layout: layouts/base.njk
 ---
-{# <h2 class="u-visually-hidden">Posts</h2>
-{% include "components/post-list.njk" %} #}
+{% from "components/post-list.njk" import postList %}
+<h2 class="u-visually-hidden">Latest Posts</h2>
+{{ postList(collections.post | reverse | limit(10)) }}
+{% if collections.post.length > 10 %}
+  <div class="c-pagination">
+    <a href="/archive/1" class="c-pagination__next">
+      Archive
+    </a>
+  </div>
+{% endif %}

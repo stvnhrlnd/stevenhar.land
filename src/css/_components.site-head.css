@@ -1,0 +1,30 @@
+.c-site-head {
+  background: var(--colour-heavy-metal);
+  padding: var(--step-3) var(--step-2) var(--step-1);
+  text-align: center;
+  word-break: break-all;
+}
+
+.c-site-head__link {
+  color: var(--colour-spring-wood);
+  text-decoration: none;
+}
+
+.c-site-head__title::before {
+  background: url(/images/avatar.jpg);
+  border: 2px solid var(--colour-pear);
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 100px;
+  margin: 0 auto var(--step--2);
+  width: 100px;
+}
+
+.c-site-head__surname {
+  color: var(--colour-pear);
+}
+
+.site-head__subtitle {
+  font-size: var(--step-1);
+}

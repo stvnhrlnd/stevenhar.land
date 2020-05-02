@@ -1,4 +1,5 @@
 _site/
 node_modules/
 src/site/_includes/css/
-package-lock.json
+src/site/images/draft/
+src/site/posts/draft.md

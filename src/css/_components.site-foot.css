@@ -1,0 +1,11 @@
+.c-site-foot {
+  border-top: 1px dotted var(--colour-regent-grey);
+  padding: var(--step-4);
+  text-align: center;
+}
+
+.c-site-foot__note {
+  color: var(--colour-pale-sky);
+  font-size: var(--step--1);
+  margin-top: var(--step-3);
+}

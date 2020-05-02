@@ -1,68 +1,47 @@
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const minify = require("html-minifier").minify;
-const { DateTime } = require("luxon");
-const fs = require("fs");
+const fs = require('fs');
 
-module.exports = eleventyConfig => {
-  eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(syntaxHighlight);
+const rssPlugin = require('@11ty/eleventy-plugin-rss');
+const syntaxHighlightingPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
 
-  eleventyConfig.addTransform("minifyhtml", (content, outputPath) => {
-    if (outputPath.endsWith(".html")) {
-      let minified = minify(content, {
-        collapseWhitespace: true
-      });
-      return minified;
-    }
+const datetimeFilter = require('./src/filters/datetime-filter');
+const limitFilter = require('./src/filters/limit-filter');
+const metatitleFilter = require('./src/filters/metatitle-filter');
+const previewFilter = require('./src/filters/preview-filter');
 
-    return content;
-  });
+const htmlMinifierTransform = require('./src/transforms/html-minifier-transform');
 
-  eleventyConfig.addFilter("formatdate", (dateObj, format = "d LLLL yyyy") => {
-    return DateTime.fromJSDate(dateObj, {
-      zone: "utc"
-    }).toFormat(format);
-  });
+module.exports = (eleventyConfig) => {
+  eleventyConfig.addPlugin(rssPlugin);
+  eleventyConfig.addPlugin(syntaxHighlightingPlugin);
 
-  eleventyConfig.addFilter("metatitle", (pageTitle, siteTitle) => {
-    if (!pageTitle || pageTitle == siteTitle) {
-      return siteTitle;
-    }
+  eleventyConfig.addFilter('datetime', datetimeFilter);
+  eleventyConfig.addFilter('limit', limitFilter);
+  eleventyConfig.addFilter('metatitle', metatitleFilter);
+  eleventyConfig.addFilter('preview', previewFilter);
 
-    if (pageTitle.length + 3 + siteTitle.length < 60) {
-      return `${pageTitle} | ${siteTitle}`;
-    }
+  eleventyConfig.addTransform('html-minifier', htmlMinifierTransform);
 
-    return pageTitle;
-  });
+  eleventyConfig.addPassthroughCopy('src/site/fonts');
+  eleventyConfig.addPassthroughCopy('src/site/images');
+  eleventyConfig.addPassthroughCopy('src/site/robots.txt');
 
-  eleventyConfig.addPassthroughCopy("favicon");
-  eleventyConfig.addPassthroughCopy("fonts");
-  eleventyConfig.addPassthroughCopy("images");
-  eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.setUseGitIgnore(false);
 
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: (err, bs) => {
-        const content = fs.readFileSync("_site/404.html");
-        bs.addMiddleware("*", (req, res) => {
+        const content = fs.readFileSync('_site/404.html');
+        bs.addMiddleware('*', (req, res) => {
           res.write(content);
           res.end();
         });
-      }
-    }
+      },
+    },
   });
 
-  eleventyConfig.setUseGitIgnore(false);
-
   return {
-    templateFormats: ["md", "njk"],
-    markdownTemplateEngine: false,
-    dataTemplateEngine: false,
-    passthroughFileCopy: true,
     dir: {
-      input: "src/site"
+      input: 'src/site',
     }
   };
 };

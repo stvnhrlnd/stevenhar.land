@@ -1,13 +1,12 @@
 .c-social {
-  font-family: var(--font-sans);
-  font-size: 1.7rem;
-  margin: 0 0 40px;
-  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--step-3);
+  justify-content: center;
 }
 
-.c-social__list-item {
-  display: inline-block;
-  margin: 0 10px;
+.c-social > * {
+  margin: 0 var(--step--2);
 }
 
 .c-social__link {

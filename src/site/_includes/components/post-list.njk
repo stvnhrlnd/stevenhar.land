@@ -1,13 +1,20 @@
-<ul class="c-post-list">
-  {% for post in collections.post | reverse %}
-    <li class="c-post-list__list-item">
-      <h3 class="c-post-list__post-title">
-        <a href="{{ post.url }}">{{ post.data.title }}</a>
-      </h3>
-      <time class="c-post-list__post-date" datetime="{{ post.date | formatdate('yyyy-LL-dd') }}">
-        {{ post.date | formatdate }}
-      </time>
-      <p>{{ post.data.description }}</p>
-    </li>
-  {% endfor %}
-</ul>
+{% macro postList(posts) %}
+  <ul class="c-post-list">
+    {% for post in posts %}
+      <li>
+        <article class="c-post">
+          <h3>
+            <a href="{{ post.url }}" rel="bookmark">
+              {{ post.data.title }}
+            </a>
+          </h3>
+          {% if 'long' in post.data.tags %}
+            <p>{{ post.data.description }}</p>
+          {% else %}
+            {{ post.templateContent | safe }}
+          {% endif %}
+        </article>
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
