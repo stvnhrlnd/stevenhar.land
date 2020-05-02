@@ -1,5 +1,5 @@
 module.exports = {
-  url: 'https://ecstatic-kalam-bc4f5d.netlify.app/',
+  url: 'https://stevenhar.land/',
   title: 'stevenhar.land',
   description: "Steven Harland's personal /sh?ite/.",
   buildTime: new Date(),
